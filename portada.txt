@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal de Batalla</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      max-width: none;
+      display: block;
+    }
+
+    .video-background video {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+      color: white;
+    }
+
+    h1 {
+      font-size: 3em;
+      font-weight: 800;
+      background: linear-gradient(135deg, #00fff7, #ff00cc, #ffd700);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientMove 6s ease infinite, fadeIn 2s ease-in-out;
+      margin-bottom: 30px;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 40px;
+      margin: 15px;
+      font-size: 1.2em;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(45deg, #ff00cc, #3333ff);
+      border: none;
+      border-radius: 50px;
+      box-shadow: 0 0 15px rgba(255, 0, 200, 0.6), 0 0 30px rgba(51, 51, 255, 0.4);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.9), 0 0 40px rgba(0, 255, 255, 0.6);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Centrado de letras y botones */
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 1;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+      }
+      .btn {
+        padding: 12px 25px;
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="video-background">
+    <video autoplay muted loop playsinline>
+      <source src="https://www.dropbox.com/scl/fi/ckoormrj6fgd6zcw0xgwq/galaxia.mp4?rlkey=qs4g9k0rbylylu2hnqls0bf5n&st=fqp51h7j&raw=1" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </div>
+
+  <audio id="bg-music" autoplay>
+    <source src="https://www.dropbox.com/scl/fi/owwi2c9ozhtd9biogunn6/NEFFEX-Fight-Back-Lyrics.mp3?rlkey=ptj2dbrjvwljmblqryxv1wznp&st=e3leh0rm&raw=1" type="audio/mpeg">
+    Tu navegador no soporta el audio.
+  </audio>
+
+  <div class="container">
+    <h1>Elige tu destino</h1>
+    <a href="https://am7e0xt3me2pnwfpshz2ua.on.drv.tw/Web1/hola.html" class="btn">Heroes</a>
+    <a href="https://am7e0xt3me2pnwfpshz2ua.on.drv.tw/Pagina_Armas/Cartas/cartas.html" class="btn">Habilidades</a>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const audio = document.getElementById('bg-music');
+      audio.volume = 0.8;
+      audio.play().catch(() => {
+        document.addEventListener('click', () => {
+          audio.play();
+        }, { once: true });
+      });
+    });
+  </script>
+
+</body>
+</html>
